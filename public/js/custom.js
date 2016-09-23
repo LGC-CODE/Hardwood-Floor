@@ -96,14 +96,14 @@ $(document).ready(function() {
     subject = encodeURIComponent($scope.subject);
     body = encodeURIComponent($scope.body);
 
-    var link = "mailto:rest@gmail.com?subject=";
+    var link = "mailto:israelpablofloor@gmail.com?subject=";
     link += subject;
     link += '&body=';
     link += body;
 
     window.location.href = link;
 
-    $('.success').fadeIn(1000).delay(2500).fadeOut(1000);
+    $('.success').fadeIn(1000);
   }; 
 
   }]);

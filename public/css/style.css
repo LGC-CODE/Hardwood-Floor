@@ -75,16 +75,17 @@ p {
 }
 
 .btn:focus {
-  background: #e44c65;
+  background: #000;
   border-color: transparent;
 }
 
 .btn-success {
-  background: #8db99b;
+  background: #242c3c;
   font-weight: 300;
   letter-spacing: 2px;
   padding: 14px 32px;
   margin-top: 26px;
+  border-radius: 14pc;
 }
 
 .btn-success:hover {
@@ -150,7 +151,7 @@ a:hover, a:active, a:focus {
 }
 
 .overlay {
-  background: RGBA(170, 48, 8, 0.7);
+  background: RGBA(191, 246, 255, 0.7);
   position: absolute;
   width: 100%;
   height: 109vh;
@@ -182,7 +183,7 @@ a:hover, a:active, a:focus {
 .sk-spinner-pulse {
   width: 60px;
   height: 60px;
-  background-color: #e44c65;
+  background-color: black;
   border-radius: 100%;
   margin: 40px auto;
   -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
@@ -213,14 +214,15 @@ a:hover, a:active, a:focus {
 -----------------------------------------*/
 
 .navbar-default {
-  background: #ffffff;
+  background: rgba(36, 44, 60, 0.69);
   box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.04);
-  border: none;
+  /* border: none; */
   margin-bottom: 0px !important;
+  border-bottom: 1px solid #8b97ae;
 }
 
 .navbar-default .navbar-brand {
-  color: #304352;
+  color: #FFF;
   font-size: 28px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -228,15 +230,15 @@ a:hover, a:active, a:focus {
 }
 
 .navbar-default .navbar-nav li a {
-    color: #777;
-    font-size: 14px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-    padding-right: 22px;
-    padding-left: 22px;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  padding-right: 22px;
+  padding-left: 22px;
 }
 
 .navbar-default .navbar-nav li a span {
@@ -351,12 +353,23 @@ a:hover, a:active, a:focus {
 
 #home h1 {
   color: #ffffff;
+  font-weight: 400;
 }
 
 #home .col-md-8 {
   padding-left: 62px;
 }
 
+phone {
+  font-weight: 700;
+}
+
+.wrapper {
+  background: rgba(36, 44, 60, 0.45);
+  padding: 5%;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
 
 
 /*---------------------------------------
@@ -372,7 +385,7 @@ a:hover, a:active, a:focus {
 }
 
 #about {
-  background: #b9fbd7;
+  background: rgba(255, 255, 255, 0.63);
 }
 
 #about .item {
@@ -381,14 +394,14 @@ a:hover, a:active, a:focus {
 }
 
 #about .about-thumb {
-  background: #a13e1e;
+  background: rgba(36, 44, 60, 0.42);
   border-radius: 4px;
   padding: 100px;
   position: relative;
 }
 
 #about .about-img img {
-  border: 8px solid #b9fbd7;
+  border: 8px solid #000;
   position: absolute;
   left: -120px;
   bottom: -325px;
@@ -499,8 +512,8 @@ a:hover, a:active, a:focus {
 -----------------------------------------*/
 
 #contact, footer {
-  color: #b9fbd7;
-  background: RGBA(147, 55, 19, 0.74);
+  color: #000;
+  background: RGBA(111, 137, 147, 0.7);
 }
 
 #contact .form-control {
@@ -530,7 +543,7 @@ label {
 }
 
 #contact input[type="submit"] {
-  background: #8db99b;
+  background: #000;
   border: none;
   color: #ffffff;
   font-weight: 400;
@@ -589,7 +602,7 @@ label {
   max-width: 100%;
   display: block;
   position: relative;
-  max-height: 300px;
+  height: 300px;
 }
 
 .grid figcaption h1 {
