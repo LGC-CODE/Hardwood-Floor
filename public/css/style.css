@@ -344,15 +344,17 @@ a:hover, a:active, a:focus {
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-        align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   height: 100vh;
   text-align: center;
+  display: inline;
 }
 
 #home h1 {
   color: #ffffff;
   font-weight: 400;
+  background: #0009;
 }
 
 #home .col-md-8 {
