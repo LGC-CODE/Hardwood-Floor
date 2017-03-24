@@ -764,6 +764,53 @@ footer {
 
 }
 
+/*---------------------------------------
+   blog styles       
+-----------------------------------------*/
 
+.blog-content {
+  display: inline-block;
+  width: 100%;
+  margin: 8% 0 0 0;
+}
 
+.blog-box {
+  margin-top: 2%;
+}
+
+.blog-body {
+  background: #1a4a72b3;
+  padding: 5%;
+}
+
+.blog-body h1 {
+  font-size: 1.6pc;
+  line-height: 2pc;
+  color: white;
+  font-weight: 500;
+}
+
+figcaption.blog-desc p {
+  font-size: 11px;
+  line-height: 1.8pc;
+  margin-top: 30%;
+}
+
+figcaption.blog-desc {
+  background: #000C;
+  color: #fff;
+}
+
+figcaption.blog-desc a {
+  background: #fff;
+  color: #000;
+}
+
+figcaption.blog-desc h1 {
+  font-size: 1pc;
+  line-height: 1.6rem;
+  background: #747474;
+  position: relative;
+  padding: 4%;
+}
 
