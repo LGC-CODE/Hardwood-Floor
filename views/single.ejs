@@ -66,7 +66,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 					<p>{{ comment.comment }}</p>
 					<p>
 						<span ng-show="!comment.isLiked" style="color: white; cursor: pointer;" ng-click="incrementComUpvotes(comment)" class="fa fa-thumbs-up"></span>
-						<span ng-show="comment.isLiked" style="color: blue; cursor: pointer;" ng-click="incrementComUpvotes(comment)" class="fa fa-thumbs-up"></span>
+						<span ng-show="comment.isLiked" style="color: blue; cursor: pointer;" ng-click="decrementComUpvotes(comment)" class="fa fa-thumbs-up"></span>
 						Likes {{ comment.upvotes }}
 					</p>
 					
