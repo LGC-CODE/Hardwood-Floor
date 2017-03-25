@@ -48,15 +48,36 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 
 <!-- Home section -->
 <ui-view></ui-view>
-<script type="text/ng-template" id="/home.html">
+<script type="text/ng-template" id="/single.html">
 	<section class="blog">
 		<div class="blog-content">
-			<div ng-repeat="article in articles" class=" col-md-6 col-sm-6 blog-box">
+			<div class=" col-md-6 col-sm-6 blog-box">
 				<div class="blog-body">
 					<img src="{{ article.img0 }}">
 					<h1>{{ article.title }}</h1>
-				  	<a class="btn btn-success" href="/blog/single/#!/home/{{ article._id }}">View Article</a>
+					<p>{{ article.body }}</p>
+				  	<a class="btn btn-success" href="/blog">Go Back</a>
 				</div>
+			</div>
+			<div class=" col-md-6 col-sm-6 blog-box">
+				<div ng-repeat="comment in article.comments" class="blog-body">
+					<img src="">
+					<h1>{{ comment.name }}</h1>
+					<p>{{ comment.comment }}</p>
+					<p>
+						<span ng-show="!comment.isLiked" style="color: white; cursor: pointer;" ng-click="incrementComUpvotes(comment)" class="fa fa-thumbs-up"></span>
+						<span ng-show="comment.isLiked" style="color: blue; cursor: pointer;" ng-click="incrementComUpvotes(comment)" class="fa fa-thumbs-up"></span>
+						Likes {{ comment.upvotes }}
+					</p>
+					
+				</div>
+				<form ng-submit="newComment()" class="form-group">
+					<label>Name:</label>
+					<input class="form-control" ng-model="user.name" type="text" name="name"><br>
+					<label>Comment:</label>
+					<input class="form-control" ng-model="user.comment" type="text" name="comment"><br>
+			  		<button class="btn btn-success" type="submit">Post Comment</button>
+			  	</form>
 			</div>
 		</div>
 	</section>

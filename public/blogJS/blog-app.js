@@ -26,8 +26,8 @@ app.config([
 			$stateProvider
 				.state('single', {
 					url: '/home/{id}',
-					templateUrl: '/home.html',
-					controller: 'articleCtrl',
+					templateUrl: '/single.html',
+					controller: 'singleCtrl',
 					resolve: {
 						blog: ['$stateParams', 'blogService', function($stateParams, blogService){
 							return blogService.getArticleById($stateParams.id);
@@ -37,13 +37,41 @@ app.config([
 		}]);
 
 app.controller('blogCtrl', ['$scope', 'blogService', function($scope, blogService){
-	var blog = blogService;
 
-	$scope.articles = blog.articles;
+	$scope.articles = blogService.articles;
+	blogService.getAllArticles();
 
 }]);
 
-app.controller('articleCtrl', ['$scope', 'blogService', 'blog', function($scope, blogService, blog){
-	var singleBlog = blog;
+app.controller('singleCtrl', ['$scope', 'blogService', 'blog', '$window', function($scope, blogService, blog, $window){
+	$scope.article = blog;
+	console.log(blog);
+
+	$scope.newComment = function(){
+		if(!$scope.user) { 
+			alert('nombre y comentario son necesarios');
+			return;
+		}
+
+		blogService.newComment(blog._id, $scope.user);
+
+		blog.comments.push({name: $scope.user.name, comment: $scope.user.comment});
+
+		$scope.user = "";
+	};
+
+	$scope.incrementComUpvotes = function(event){
+		blogService.upvoteEvent(event);
+		event.upvotes += 1;
+		$window.localStorage[event.comment] = true; //single event
+		event.isLiked = $window.localStorage[event.comment];
+	};
+
+	$scope.decrementComUpvotes = function(event){
+		blogService.downvoteEvent(event);
+		event.upvotes -= 1;
+		$window.localStorage[event.comment] = '';
+		event.isLiked = $window.localStorage[event.comment];
+	};
 
 }]);

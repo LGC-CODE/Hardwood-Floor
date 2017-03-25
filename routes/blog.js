@@ -15,6 +15,10 @@ router.get('/input', function(req, res, next) {
   res.render('inputs');
 });
 
+router.get('/single', function(req, res, next) {
+  res.render('single');
+});
+
 var storage = multer.diskStorage({
 	destination: function(req, file, callback){
 		var path = __dirname + '/../public/uploads';
@@ -30,6 +34,16 @@ var upload = multer({
 	storage: storage
 });
 
+router.get('/all', function(req, res, next){
+	articlesModel.find(function(err, article){
+		
+		if(err){ return next(err); }
+
+		res.json(article);
+
+	});
+});
+
 router.post('/new', upload.any(), function(req, res, next){
 	var model = new articlesModel();
 	var nameOfFiles0 = req.files[0].originalname;
@@ -43,9 +57,60 @@ router.post('/new', upload.any(), function(req, res, next){
 		if(err){ return next(err); }
 
 		console.log('saved');
-		res.redirect('/');
+		res.redirect('/blog');
 
 	})
 });
+
+router.param('single', function(req, res, next, id){
+	var query = articlesModel.findById(id);
+
+	query.exec(function(err, article){
+		if(err){ return next(err); }
+		if(!article){ return next(new Error("can\'t find acticle")); }
+		 req.articleObject = article;
+		 return next();
+	});
+});
+
+router.get('/get/single/:single', function(req, res){
+	req.articleObject.populate('comments', function(err, revista){
+		if(err){ return next(err); }
+
+		res.json(revista);
+	});
+}); //retrieves single revista with articles array populated
+
+router.post('/get/single/:single/newComment', function(req, res){
+	var comments = new commentsModel(req.body);
+
+	comments.save(function(err, com){
+		if(err){ return next(err); }
+
+		req.articleObject.comments.push(com);
+
+		req.articleObject.save(function(err, event){
+			if(err){ return next(err); }
+
+			res.json(event);
+		})
+	})
+});
+
+router.put('/get/single/:single/upvote', function(req, res, next){
+	req.articleObject.upvote(function(err, event){
+		if(err){ return next(err); }
+
+		res.json(event);
+	});
+}); //upvotes single revista
+
+router.put('/get/single/:single/downvote', function(req, res, next){
+	req.articleObject.downvote(function(err, event){
+		if(err){ return next(err); }
+
+		res.json(event);
+	});
+});	//downvotes single revista
 
 module.exports = router;

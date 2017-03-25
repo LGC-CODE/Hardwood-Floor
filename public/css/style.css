@@ -222,7 +222,7 @@ a:hover, a:active, a:focus {
 
 .navbar-default .navbar-brand {
   color: #FFF;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: bold;
   letter-spacing: 2px;
   margin: 0;
@@ -370,6 +370,7 @@ phone {
   padding: 5%;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
+  margin-top: 5%;
 }
 
 
@@ -688,7 +689,7 @@ footer {
 }
 
 .go-top:hover {
-  background: #e44c65;
+  background: #000;
   color: #ffffff;
 }
 
@@ -762,6 +763,16 @@ footer {
   min-width: 264px;
   }
 
+  .blog-content {
+    display: inline-block;
+    width: 100%;
+    margin: 22% 0 0 0;
+  }
+
+  .wrapper {
+    margin-top: 30%;
+  }
+
 }
 
 /*---------------------------------------
@@ -771,11 +782,11 @@ footer {
 .blog-content {
   display: inline-block;
   width: 100%;
-  margin: 8% 0 0 0;
+  margin: 0;
 }
 
 .blog-box {
-  margin-top: 2%;
+  padding: 10% 3%;
 }
 
 .blog-body {
@@ -790,23 +801,27 @@ footer {
   font-weight: 500;
 }
 
-figcaption.blog-desc p {
+.blog-body img {
+  width: 100%;
+}
+
+.blog-desc p {
   font-size: 11px;
   line-height: 1.8pc;
   margin-top: 30%;
 }
 
-figcaption.blog-desc {
+.blog-desc {
   background: #000C;
   color: #fff;
 }
 
-figcaption.blog-desc a {
+.blog-desc a {
   background: #fff;
   color: #000;
 }
 
-figcaption.blog-desc h1 {
+.blog-desc h1 {
   font-size: 1pc;
   line-height: 1.6rem;
   background: #747474;

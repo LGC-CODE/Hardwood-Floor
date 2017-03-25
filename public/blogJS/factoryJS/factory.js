@@ -6,7 +6,7 @@ app.factory('blogService', ['$http', function($http){
 				body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				isLiked: '',
 				upvotes: 0,
-				img0: '/images/con5.jpg',
+				img0: '/images/con9.jpg',
 				comments: [
 					{
 						name: 'Luis Constante',
@@ -51,7 +51,7 @@ app.factory('blogService', ['$http', function($http){
 				body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 				isLiked: '',
 				upvotes: 0,
-				img0: '/images/con5.jpg',
+				img0: '/images/con9.jpg',
 				comments: [
 					{
 						name: 'Luis Constante',
@@ -101,17 +101,37 @@ app.factory('blogService', ['$http', function($http){
 	}
 
 	o.getAllArticles = function(){
-		return $http.get('/getArticles').success(function(data){
+		return $http.get('/blog/all').success(function(data){
 			angular.copy(data, o.articles);
 		});
 	}
 
 	o.getArticleById = function(id){
-		return $http.get('/blog/single/' + id).then(function(blogObj){
+		return $http.get('/blog/get/single/' + id).then(function(blogObj){
 			console.log(blogObj.data, 'check this');
 			return blogObj.data;
 		});
 	}
+
+	o.newComment = function(id, data){
+		$http.post('/blog/get/single/' + id + '/newComment/', data).success(function(data){
+			console.log('comment successfully added');
+		});
+	}
+
+	o.upvoteEvent = function(edition) {
+		return $http.put('/blog/get/single/' + edition._id + '/upvote')
+			.success(function(data){
+				console.log('successfully upvoted');
+			});
+	};
+
+	o.downvoteEvent = function(edition) {
+		return $http.put('/eventos/getSingleEvent/' + edition._id + '/downvote')
+			.success(function(data){
+				console.log('successfully downvoted');
+			}); 
+	};
 
 	return o;
 }]);
