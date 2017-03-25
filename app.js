@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 require('./models/articleModel');
 require('./models/commentsModel');
 
-mongoose.connect('mongodb://admin:Gokussj6@ds145405.mlab.com:45405/heroku_xmk39zvd' , function(err){
+mongoose.connect('mongodb://104.236.186.74/hardwood-db' , function(err){
 
   console.log('servers running...');
 

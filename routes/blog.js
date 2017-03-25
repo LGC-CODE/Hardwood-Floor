@@ -73,6 +73,17 @@ router.param('single', function(req, res, next, id){
 	});
 });
 
+router.param('comment', function(req, res, next, id){
+	var query = commentsModel.findById(id);
+
+	query.exec(function(err, article){
+		if(err){ return next(err); }
+		if(!article){ return next(new Error("can\'t find acticle")); }
+		 req.commentObject = article;
+		 return next();
+	});
+});
+
 router.get('/get/single/:single', function(req, res){
 	req.articleObject.populate('comments', function(err, revista){
 		if(err){ return next(err); }
@@ -103,7 +114,7 @@ router.put('/get/single/:single/upvote', function(req, res, next){
 
 		res.json(event);
 	});
-}); //upvotes single revista
+}); //upvotes single article
 
 router.put('/get/single/:single/downvote', function(req, res, next){
 	req.articleObject.downvote(function(err, event){
@@ -111,6 +122,22 @@ router.put('/get/single/:single/downvote', function(req, res, next){
 
 		res.json(event);
 	});
-});	//downvotes single revista
+});	//downvotes single article
+
+router.put('/get/single/:single/newComment/:comment/upvote', function(req, res, next){
+	req.commentObject.upvote(function(err, com){
+		if(err){ return next(err); }
+
+		res.json(com);
+	});
+});
+
+router.put('/get/single/:single/newComment/:comment/downvote', function(req, res, next){
+	req.commentObject.downvote(function(err, com){
+		if(err){ return next(err); }
+
+		res.json(com);
+	});
+});
 
 module.exports = router;

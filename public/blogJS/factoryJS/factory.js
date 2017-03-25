@@ -119,15 +119,29 @@ app.factory('blogService', ['$http', function($http){
 		});
 	}
 
-	o.upvoteEvent = function(edition) {
-		return $http.put('/blog/get/single/' + edition._id + '/upvote')
+	o.upvoteComment = function(edition, comment) {
+		return $http.put('/blog/get/single/' + edition + '/newComment/' + comment +'/upvote')
 			.success(function(data){
 				console.log('successfully upvoted');
 			});
 	};
 
-	o.downvoteEvent = function(edition) {
-		return $http.put('/eventos/getSingleEvent/' + edition._id + '/downvote')
+	o.downvoteComment = function(edition, comment) {
+		return $http.put('/blog/get/single/' + edition + '/newComment/' + comment +'/downvote')
+			.success(function(data){
+				console.log('successfully downvoted');
+			});
+	};
+
+	o.upvoteArticle = function(edition) {
+		return $http.put('/blog/get/single/' + edition + '/upvote')
+			.success(function(data){
+				console.log('successfully upvoted');
+			});
+	};
+
+	o.downvoteArticle = function(edition) {
+		return $http.put('/blog/get/single/' + edition + '/downvote')
 			.success(function(data){
 				console.log('successfully downvoted');
 			}); 

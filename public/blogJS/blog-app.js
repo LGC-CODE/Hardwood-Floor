@@ -36,16 +36,45 @@ app.config([
 				});
 		}]);
 
-app.controller('blogCtrl', ['$scope', 'blogService', function($scope, blogService){
+app.controller('blogCtrl', ['$scope', 'blogService', '$window', function($scope, blogService, $window){
 
 	$scope.articles = blogService.articles;
 	blogService.getAllArticles();
+	var article = $scope.articles;
+
+	setTimeout(function(){
+		for(var event in article){
+			article[event].isLiked = $window.localStorage[article[event].title];
+			$scope.$apply();
+		}
+	}, 1000);
+
+	$scope.incrementUpvotes = function(event){
+		blogService.upvoteArticle(event._id);
+		event.upvotes += 1;
+		$window.localStorage[event.title] = true; //single event
+		event.isLiked = $window.localStorage[event.title];
+	};
+
+	$scope.decrementUpvotes = function(event){
+		blogService.downvoteArticle(event._id);
+		event.upvotes -= 1;
+		$window.localStorage[event.title] = '';
+		event.isLiked = $window.localStorage[event.title];
+	};
 
 }]);
 
 app.controller('singleCtrl', ['$scope', 'blogService', 'blog', '$window', function($scope, blogService, blog, $window){
 	$scope.article = blog;
-	console.log(blog);
+	var comment = blog.comments;
+
+	setTimeout(function(){
+		for(var event in comment){
+			comment[event].isLiked = $window.localStorage[comment[event].comment];
+			$scope.$apply();
+		}
+	}, 1000);
 
 	$scope.newComment = function(){
 		if(!$scope.user) { 
@@ -61,14 +90,14 @@ app.controller('singleCtrl', ['$scope', 'blogService', 'blog', '$window', functi
 	};
 
 	$scope.incrementComUpvotes = function(event){
-		blogService.upvoteEvent(event);
+		blogService.upvoteComment(blog._id, event._id);
 		event.upvotes += 1;
 		$window.localStorage[event.comment] = true; //single event
 		event.isLiked = $window.localStorage[event.comment];
 	};
 
 	$scope.decrementComUpvotes = function(event){
-		blogService.downvoteEvent(event);
+		blogService.downvoteComment(blog._id, event._id);
 		event.upvotes -= 1;
 		$window.localStorage[event.comment] = '';
 		event.isLiked = $window.localStorage[event.comment];
