@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var commentsModel = mongoose.model('commentsModel');
 var articlesModel = mongoose.model('articlesModel');
 var multer  = require('multer');
-
+var single = "";
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -16,7 +16,7 @@ router.get('/input', function(req, res, next) {
 });
 
 router.get('/single', function(req, res, next) {
-  res.render('single');
+  	res.render('single');
 });
 
 var storage = multer.diskStorage({
@@ -87,7 +87,7 @@ router.param('comment', function(req, res, next, id){
 router.get('/get/single/:single', function(req, res){
 	req.articleObject.populate('comments', function(err, revista){
 		if(err){ return next(err); }
-
+		single = revista;
 		res.json(revista);
 	});
 }); //retrieves single revista with articles array populated

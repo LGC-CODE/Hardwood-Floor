@@ -65,9 +65,14 @@ app.controller('blogCtrl', ['$scope', 'blogService', '$window', function($scope,
 
 }]);
 
-app.controller('singleCtrl', ['$scope', 'blogService', 'blog', '$window', function($scope, blogService, blog, $window){
+app.controller('singleCtrl', ['$scope', 'blogService', 'blog', '$window', '$stateParams',function($scope, blogService, blog, $window, $stateParams){
 	$scope.article = blog;
 	var comment = blog.comments;
+
+	$scope.$parent.meta = {
+		title: blog.title,
+		body: blog.body
+	}
 
 	setTimeout(function(){
 		for(var event in comment){
@@ -103,4 +108,8 @@ app.controller('singleCtrl', ['$scope', 'blogService', 'blog', '$window', functi
 		event.isLiked = $window.localStorage[event.comment];
 	};
 
+}]);
+
+app.controller('metaCtrl', ['$scope', function($scope){
+	$scope.meta = {};
 }]);

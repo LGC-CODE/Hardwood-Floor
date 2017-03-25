@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="blog-app" lang="en" ng-controller="metaCtrl">
 <head>
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
+	<meta name="keywords" content="{{ meta.body }}">
+	<meta name="description" content="{{ meta.body }}">
 
-	<title>Innovative Hardwood Floors Services Fast General Repair in the bay area oakland california floor replacement exterior interior - Pablo's Hardwood Floor </title>
+	<title>{{ meta.title }}</title>
 <!--
 Snapshot Template
 http://www.templatemo.com/tm-493-snapshot
@@ -32,8 +32,23 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 	<!-- Google web font  -->
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
 	
+	<!-- Javascript  -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/vegas.min.js"></script>
+	<script src="/js/modernizr.custom.js"></script>
+	<script src="/js/toucheffects.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/smoothscroll.js"></script>
+	<script src="/js/wow.min.js"></script>
+	<script src="/js/custom.js"></script>
+	<script src="/blogJS/blog-app.js"></script>
+	<script src="/blogJS/factoryJS/factory.js"></script>
+
 </head>
-<body ng-app="blog-app" ng-controller="blogCtrl" id="top" data-spy="scroll" data-offset="50" data-target=".navbar-collapse">
+<body id="top" data-spy="scroll" data-offset="50" data-target=".navbar-collapse">
 
 
 <!-- Preloader section -->
@@ -114,21 +129,6 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 
 <!-- Back top -->
 <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
-
-<!-- Javascript  -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
-<script src="/js/jquery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/vegas.min.js"></script>
-<script src="/js/modernizr.custom.js"></script>
-<script src="/js/toucheffects.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/smoothscroll.js"></script>
-<script src="/js/wow.min.js"></script>
-<script src="/js/custom.js"></script>
-<script src="/blogJS/blog-app.js"></script>
-<script src="/blogJS/factoryJS/factory.js"></script>
 
 </body>
 </html>
