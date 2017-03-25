@@ -57,7 +57,7 @@ router.post('/new', upload.any(), function(req, res, next){
 		if(err){ return next(err); }
 
 		console.log('saved');
-		res.redirect('/blog');
+		res.redirect('http://pabloshardwoodfloor.com/blog');
 
 	})
 });
