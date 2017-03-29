@@ -25,7 +25,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(prerenderServer.set('prerenderServiceUrl', 'http://138.197.210.159:3000').set('prerenderToken', 'PFuh1GAtl9TcH7LXc9fV'));
+app.use(prerenderServer.set('prerenderServiceUrl', 'http://138.197.210.159:3000'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
